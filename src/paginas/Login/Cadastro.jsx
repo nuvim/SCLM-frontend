@@ -29,8 +29,8 @@ export default function Cadastro() {
       <div className="login-card">
         {/* lado esquerdo decorativo agora eh Login */}
         <div className="login-decorativo">
-          <h1>Bem-vindo de volta!</h1>
-          <p>Já possui uma conta?</p>
+          <h1>Já tem uma conta?</h1>
+          <p>Acesse a sua conta agora</p>
           <button className="btn-secundario" onClick={() => navegar('/login')}>Faça Login</button>
         </div>
 
