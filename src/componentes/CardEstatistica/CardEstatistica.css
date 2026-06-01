@@ -1,0 +1,27 @@
+.card-estatistica {
+  background-color: var(--cor-fundo);
+  border-radius: var(--raio-borda-grande);
+  padding: 24px;
+  min-width: 178px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--cor-borda);
+}
+
+.card-estatistica-titulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cor-texto-sec);
+}
+
+.card-estatistica-valor {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cor-texto);
+}
+
+/* no tema escuro os cards do topo tem cor um pouco diferente pra destacar */
+[data-tema="escuro"] .card-estatistica {
+  background-color: var(--cor-card);
+}

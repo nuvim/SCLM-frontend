@@ -1,0 +1,51 @@
+.navbar {
+  height: 64px;
+  background-color: var(--cor-card);
+  border-radius: var(--raio-borda-grande);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  margin: 24px 40px;
+  border: 1px solid var(--cor-borda);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-grupo-esq,
+.navbar-grupo-dir {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-nav {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--raio-borda-botao);
+  background-color: var(--cor-fundo);
+  border: 1px solid var(--cor-borda);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-texto-sec);
+  transition: all 0.2s ease;
+}
+
+.btn-nav:hover {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  transform: translateY(-2px);
+}
+
+.icone-svg {
+  width: 24px;
+  height: 24px;
+  background-color: var(--cor-texto-sec);
+  -webkit-mask: url('../../assets/icone-busca-musica.svg') no-repeat center / contain;
+  mask: url('../../assets/icone-busca-musica.svg') no-repeat center / contain;
+  transition: background-color 0.2s ease;
+}
+
+.btn-nav:hover .icone-svg {
+  background-color: var(--cor-texto);
+}

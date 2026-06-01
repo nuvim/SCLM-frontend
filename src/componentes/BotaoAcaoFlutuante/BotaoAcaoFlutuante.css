@@ -1,0 +1,32 @@
+.btn-flutuante {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 70px;
+  height: 70px;
+  background-color: var(--cor-primario);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.btn-flutuante:hover {
+  background-color: var(--cor-primario-hover);
+  transform: scale(1.05);
+}
+
+.btn-flutuante .material-icons {
+  font-size: 32px;
+}
+
+.icone-pequeno {
+  font-size: 20px !important;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
