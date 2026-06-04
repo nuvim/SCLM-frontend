@@ -7,6 +7,7 @@ import Cadastro from './paginas/Login/Cadastro';
 import Dashboard from './paginas/Dashboard/Dashboard';
 import MusicaInicial from './paginas/Musicas/MusicaInicial';
 import LinkInicial from './paginas/Links/LinkInicial';
+import EsqueceuSenha from './paginas/Login/EsqueceuSenha';
 import './App.css';
 
 function App() {
@@ -16,9 +17,10 @@ function App() {
         <BrowserRouter>
           <Routes>
             {/* Rotas Publicas */}
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login />} />        
             <Route path="/cadastro" element={<Cadastro />} />
-            
+            <Route path="/esqueceu-senha" element={<EsqueceuSenha />} />
+
             {/* rotas protegidas com navbar */}
             <Route element={<LayoutAutenticado />}>
               <Route path="/dashboard" element={<Dashboard />} />

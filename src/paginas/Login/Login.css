@@ -24,28 +24,28 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--cor-texto);
   padding: 40px;
   text-align: center;
 }
 
 .login-decorativo h1 {
   font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-weight: bold;
   line-height: 1.2;
 }
 
 .login-form h2 {
   font-size: 2.5rem;
   color: var(--cor-texto);
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   text-align: center;
 }
 
 .login-decorativo p {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   opacity: 0.8;
+  color: var(--cor-texto-sec);
 }
 
 .login-form-container {
@@ -66,7 +66,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
 .form-grupo .material-icons {
@@ -80,24 +80,23 @@
   width: 100%;
   padding: 14px 16px;
   padding-right: 48px;
-  border: 1px solid var(--cor-borda);
+  border: 2px solid var(--cor-borda);
   border-radius: var(--raio-borda);
-  background-color: var(--cor-fundo);
+  background-color: var(--cor-card);
   color: var(--cor-texto);
   font-size: 1.1rem;
 }
 
 .btn-secundario {
   background-color: var(--cor-primario);
-  color: white;
-  border: none;
-  border-radius: var(--raio-borda-botao);
+  color: var(--cor-texto);
+  border-radius: var(--raio-borda);
   padding: 12px 32px;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  margin-top: 16px;
+  margin-top: 32px;
 }
 
 .btn-secundario:hover {
@@ -109,17 +108,17 @@
 }
 
 .form-grupo input::placeholder {
-  color: var(--cor-texto-label);
+  color: var(--cor-texto-sec);
 }
 
 .btn-primario {
   width: 100%;
   padding: 16px;
   background-color: var(--cor-primario);
-  color: white;
-  border-radius: var(--raio-borda-botao);
-  font-size: 1.1rem;
-  font-weight: 600;
+  color: var(--cor-texto);
+  border-radius: var(--raio-borda);
+  font-size: 1.5rem;
+  font-weight: 500;
   margin-top: 8px;
   margin-bottom: 24px;
   transition: background-color 0.3s ease;
@@ -141,7 +140,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .checkbox-lembre {
@@ -153,9 +152,10 @@
 }
 
 .checkbox-lembre input {
-  width: 18px;
-  height: 18px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
+  border-color: var(--cor-borda);
   accent-color: var(--cor-primario);
 }
 
@@ -163,6 +163,7 @@
   color: var(--cor-texto);
   text-decoration: none;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .link-esqueceu:hover {
@@ -177,4 +178,13 @@
 .texto-cadastro a {
   color: var(--cor-primario);
   font-weight: 600;
+}
+
+.login-card-invertido {
+  flex-direction: row-reverse;
+}
+
+.login-card-invertido .login-decorativo {
+  margin: 0px 0px 0px 0;
+  border-radius: var(--raio-borda-grande) 0 0 var(--raio-borda-grande);
 }

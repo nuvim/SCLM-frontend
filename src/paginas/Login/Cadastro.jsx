@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BotaoTema from '../../componentes/BotaoTema/BotaoTema';
-import '../Login/Login.css';
+import './Login.css';
 
 export default function Cadastro() {
   const [nome, setNome] = useState('');
@@ -26,18 +26,18 @@ export default function Cadastro() {
     <div className="login-container">
       <BotaoTema flutuante={true} />
 
-      <div className="login-card">
+      <div className="login-card login-card-invertido">
         {/* lado esquerdo decorativo agora eh Login */}
         <div className="login-decorativo">
-          <h1>Já tem uma conta?</h1>
-          <p>Acesse a sua conta agora</p>
-          <button className="btn-secundario" onClick={() => navegar('/login')}>Faça Login</button>
+          <h1>Bem-vindo de Volta!</h1>
+          <p>Já tem uma conta?</p>
+          <button className="btn-secundario" onClick={() => navegar('/login')}>Entrar na Conta</button>
         </div>
 
         {/* lado direito com formulario */}
-        <div className="login-form-container">
+       <div className="login-form-container">
           <form className="login-form" onSubmit={tratarSubmit}>
-            <h2>Cadastre-se</h2>
+            <h2>Registra-se</h2>
             
             <div className="form-grupo">
               <input 
@@ -48,7 +48,6 @@ export default function Cadastro() {
                 onChange={(e) => setNome(e.target.value)}
                 required
               />
-              <span className="material-icons">badge</span>
             </div>
 
             <div className="form-grupo">
@@ -68,6 +67,18 @@ export default function Cadastro() {
                 type="password" 
                 id="senha" 
                 placeholder="Senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                required
+              />
+              <span className="material-icons">lock_outline</span>
+            </div>
+
+            <div className="form-grupo">
+              <input 
+                type="password" 
+                id="senha" 
+                placeholder="Confirmar senha"
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
                 required

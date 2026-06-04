@@ -8,7 +8,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [carregando, setCarregando] = useState(false);
-  
+
   const { fazerLogin } = useContext(ContextoAutenticacao);
   const navegar = useNavigate();
 
@@ -16,12 +16,12 @@ export default function Login() {
   const tratarSubmit = async (e) => {
     e.preventDefault();
     setCarregando(true);
-    
+
     // >>> BACKEND: trocar por POST /api/auth/login <<<
     const sucesso = await fazerLogin(email, senha);
-    
+
     setCarregando(false);
-    if (sucesso) {
+    if (sucesso) { 
       navegar('/musicas');
     }
   };
@@ -42,11 +42,11 @@ export default function Login() {
         <div className="login-form-container">
           <form className="login-form" onSubmit={tratarSubmit}>
             <h2>Login</h2>
-            
+
             <div className="form-grupo">
-              <input 
-                type="email" 
-                id="email" 
+              <input
+                type="email"
+                id="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -56,9 +56,9 @@ export default function Login() {
             </div>
 
             <div className="form-grupo">
-              <input 
-                type="password" 
-                id="senha" 
+              <input
+                type="password"
+                id="senha"
                 placeholder="Senha"
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
@@ -72,7 +72,7 @@ export default function Login() {
                 <input type="checkbox" />
                 <span>Lembre de mim</span>
               </label>
-              <a href="#esqueceu" className="link-esqueceu">Esqueceu a senha?</a>
+              <a onClick={() => navegar('/esqueceu-senha')} className="link-esqueceu">Esqueceu a senha?</a>
             </div>
 
             <button type="submit" className="btn-primario" disabled={carregando}>
