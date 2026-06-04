@@ -11,7 +11,7 @@ export default function BotaoTema({ flutuante = false }) {
       onClick={alternarTema}
       title={temaEscuro ? "Mudar para tema claro" : "Mudar para tema escuro"}
     >
-      <span className="material-icons">
+      <span className="material-icons-outlined">
         {temaEscuro ? 'light_mode' : 'dark_mode'}
       </span>
     </button>

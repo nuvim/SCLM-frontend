@@ -13,7 +13,6 @@
   height: 600px;
   background-color: var(--cor-card);
   border-radius: var(--raio-borda-grande);
-  overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
@@ -27,6 +26,7 @@
   color: var(--cor-texto);
   padding: 40px;
   text-align: center;
+  border-radius: var(--raio-borda-grande) 48px 48px var(--raio-borda-grande);
 }
 
 .login-decorativo h1 {
@@ -70,6 +70,13 @@
 }
 
 .form-grupo .material-icons {
+  position: absolute;
+  right: 16px;
+  color: var(--cor-texto-sec);
+  font-size: 24px;
+}
+
+.form-grupo .material-icons-outlined {
   position: absolute;
   right: 16px;
   color: var(--cor-texto-sec);
@@ -185,6 +192,5 @@
 }
 
 .login-card-invertido .login-decorativo {
-  margin: 0px 0px 0px 0;
-  border-radius: var(--raio-borda-grande) 0 0 var(--raio-borda-grande);
+  border-radius: 48px var(--raio-borda-grande) var(--raio-borda-grande) 48px;
 }

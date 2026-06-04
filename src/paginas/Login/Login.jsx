@@ -52,7 +52,7 @@ export default function Login() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <span className="material-icons">account_circle</span>
+              <span className="material-icons-outlined">account_circle</span>
             </div>
 
             <div className="form-grupo">

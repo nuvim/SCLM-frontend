@@ -46,7 +46,7 @@ export default function EsqueceuSenha() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <span className="material-icons">account_circle</span>
+              <span className="material-icons-outlined">account_circle</span>
             </div>
 
             <button type="submit" className="btn-primario" disabled={carregando}>
