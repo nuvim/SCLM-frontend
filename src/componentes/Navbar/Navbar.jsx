@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ContextoAutenticacao } from '../../contextos/ContextoAutenticacao';
+import { ContextoExportar } from '../../contextos/ContextoExportar';
 import BotaoTema from '../BotaoTema/BotaoTema';
 import './Navbar.css';
 
@@ -8,6 +9,7 @@ export default function Navbar() {
   const { fazerLogout } = useContext(ContextoAutenticacao);
   const location = useLocation();
   const navegar = useNavigate();
+  const { setModalExportarAberto } = useContext(ContextoExportar);
 
   // verifica em qual modulo estamos
   const isMusica = location.pathname.includes('/musicas');
@@ -21,19 +23,20 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-grupo-esq">
-        <button className="btn-nav" onClick={tratarLogout} title="Sair">
+        <button className="btn-nav btn-nav-logout" onClick={tratarLogout} title="Sair">
           <span className="material-icons">logout</span>
         </button>
-        <button className="btn-nav" title="Upload">
+        <button className="btn-nav btn-nav-upload" onClick={() => setModalExportarAberto(true)}>
           <span className="material-icons">file_upload</span>
+          <span className="upload-texto">Exportar</span>
         </button>
         {isMusica && (
-          <button className="btn-nav" title="Estatísticas" onClick={() => navegar('/dashboard')}>
+          <button className="btn-nav"onClick={() => navegar('/dashboard')}>
             <span className="material-icons">bar_chart</span>
           </button>
         )}
         {isDashboard && (
-          <button className="btn-nav" title="Voltar para Músicas" onClick={() => navegar('/musicas')}>
+          <button className="btn-nav"onClick={() => navegar('/musicas')}>
             <span className="material-icons">music_note</span>
           </button>
         )}
@@ -42,11 +45,12 @@ export default function Navbar() {
       <div className="navbar-grupo-dir">
         {/* busca customizada pra musica ou busca normal pra links */}
         {isMusica ? (
-          <button className="btn-nav" title="Buscar Música">
+          <div className="btn-nav btn-nav-busca">
             <div className="icone-svg"></div>
-          </button>
+            <input className="busca-input" type="text" placeholder="Música ou Artista" />
+          </div>
         ) : (
-          <button className="btn-nav" title="Buscar">
+          <button className="btn-nav">
             <span className="material-icons">search</span>
           </button>
         )}

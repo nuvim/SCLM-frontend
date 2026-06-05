@@ -19,7 +19,7 @@
 }
 
 .btn-nav {
-  width: 40px;
+  min-width: 40px;
   height: 40px;
   border-radius: var(--raio-borda-botao);
   background-color: var(--cor-fundo);
@@ -33,7 +33,7 @@
 
 .btn-nav:hover {
   background-color: var(--cor-fundo);
-  color: var(--cor-texto);
+  color: var(--cor-primario);
   transform: translateY(-2px);
 }
 
@@ -48,4 +48,66 @@
 
 .btn-nav:hover .icone-svg {
   background-color: var(--cor-texto);
+}
+
+.btn-nav-upload {
+  overflow: hidden;
+  max-width: 40px;
+  transition: max-width 0.3s ease, padding 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-nav-upload:hover {
+  max-width: 160px;
+  padding: 0 16px;
+  gap: 8px;
+}
+
+.btn-nav-upload .upload-texto {
+  opacity: 0;
+  width: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-nav-upload:hover .upload-texto {
+  opacity: 1;
+  width: auto;
+}
+
+.btn-nav-logout:hover .material-icons {
+  color: var(--cor-vermelho);
+}
+
+.btn-nav-busca {
+  overflow: hidden;
+  transition: width 0.4s cubic-bezier(0, 0, 0.2, 1), padding 0.4s ease;
+  white-space: nowrap;
+}
+
+.btn-nav-busca:hover {
+  width: 400px !important;
+  padding: 0 16px;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.navbar-grupo-dir {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.busca-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--cor-texto);
+  font-size: 0.9rem;
+  width: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-nav-busca:hover .busca-input {
+  opacity: 1;
+  width: 100%;
 }

@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import CardNavegacao from '../../componentes/CardNavegacao/CardNavegacao';
 import BotaoAcaoFlutuante from '../../componentes/BotaoAcaoFlutuante/BotaoAcaoFlutuante';
 import ModalMusica from '../../componentes/Modais/ModalMusica';
 import ModalDeletar from '../../componentes/Modais/ModalDeletar';
 import { buscarMusicas } from '../../servicos/dadosFake';
+import ModalExportar from '../../componentes/Modais/ModalExportar';
+import { ContextoExportar } from '../../contextos/ContextoExportar';
 import './Musicas.css';
 
 export default function MusicaInicial() {
@@ -21,6 +23,7 @@ export default function MusicaInicial() {
   const [modalAddAberto, setModalAddAberto] = useState(false);
   const [modalDeletarAberto, setModalDeletarAberto] = useState(false);
   const [musicaAtiva, setMusicaAtiva] = useState(null);
+  const { modalExportarAberto, setModalExportarAberto } = useContext(ContextoExportar);
 
   const tratarSalvar = (/* dados */) => {
     // >>> BACKEND: trocar por POST/PUT /api/musicas <<<
@@ -90,6 +93,11 @@ export default function MusicaInicial() {
         onClose={() => setModalDeletarAberto(false)}
         aoConfirmar={tratarDeletar}
         nomeItem={musicaAtiva?.titulo}
+      />
+
+      <ModalExportar
+        isOpen={modalExportarAberto}
+        onClose={() => setModalExportarAberto(false)}
       />
     </div>
   );

@@ -13,7 +13,7 @@
 
 .btn-tema:hover {
   background-color: var(--cor-fundo);
-  color: var(--cor-texto);
+  color: var(--cor-primario);
 }
 
 .btn-tema.flutuante {
