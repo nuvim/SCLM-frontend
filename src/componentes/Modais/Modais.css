@@ -140,3 +140,25 @@
   color: var(--cor-texto);
   margin-bottom: 24px;
 }
+
+.modal-obs-textarea {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #E1F2FE;      /* borda mais suave, sem azul */
+  border-radius: var(--raio-borda-botao); ;
+  background-color: #E1F2FE;      /* fundo diferente do card */
+  color: var(--cor-texto);
+  font-size: 1rem;
+  font-weight: 500;
+  resize: none;
+  height: 120px;
+}
+
+.modal-obs-textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.modal-obs-botao {
+  border-color: #E1F2FE;          /* borda dos botões mais suave */
+}

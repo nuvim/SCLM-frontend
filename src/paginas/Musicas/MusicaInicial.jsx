@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import toast from 'react-hot-toast';
 import CardNavegacao from '../../componentes/CardNavegacao/CardNavegacao';
 import BotaoAcaoFlutuante from '../../componentes/BotaoAcaoFlutuante/BotaoAcaoFlutuante';
 import ModalMusica from '../../componentes/Modais/ModalMusica';
@@ -27,10 +28,13 @@ export default function MusicaInicial() {
 
   const tratarSalvar = (/* dados */) => {
     // >>> BACKEND: trocar por POST/PUT /api/musicas <<<
+    toast.success('Música adicionada');
   };
 
   const tratarDeletar = () => {
     // >>> BACKEND: trocar por DELETE /api/musicas/:id <<<
+    toast.success('Música deletada com sucesso'); // adiciona
+    setModalDeletarAberto(false);
   };
 
   return (
@@ -59,8 +63,8 @@ export default function MusicaInicial() {
               </div>
               <div className="item-separador"></div>
               <div className="item-conteudo">
-                <h3>{musica.titulo}</h3>
-                <p>{musica.artistas}</p>
+                <h3>{musica.nome}</h3>      {/* era musica.titulo */}
+                <p>{musica.artista}</p>     {/* era musica.artistas */}
               </div>
               <div className="item-acoes">
                 <button className="btn-acao" title="Editar" onClick={() => { setMusicaAtiva(musica); setModalAddAberto(true); }}>
@@ -98,6 +102,7 @@ export default function MusicaInicial() {
       <ModalExportar
         isOpen={modalExportarAberto}
         onClose={() => setModalExportarAberto(false)}
+        totalItens={musicas.length}
       />
     </div>
   );

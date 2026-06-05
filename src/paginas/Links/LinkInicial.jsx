@@ -1,9 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import toast from 'react-hot-toast';
 import CardNavegacao from '../../componentes/CardNavegacao/CardNavegacao';
 import BotaoAcaoFlutuante from '../../componentes/BotaoAcaoFlutuante/BotaoAcaoFlutuante';
 import ModalLink from '../../componentes/Modais/ModalLink';
 import ModalDeletar from '../../componentes/Modais/ModalDeletar';
+import ModalExportar from '../../componentes/Modais/ModalExportar';
+import { ContextoExportar } from '../../contextos/ContextoExportar';
 import { buscarLinks } from '../../servicos/dadosFake';
+import ModalObservacao from '../../componentes/Modais/ModalObservacao';
 import './Links.css';
 
 export default function LinkInicial() {
@@ -21,13 +25,18 @@ export default function LinkInicial() {
   const [modalAddAberto, setModalAddAberto] = useState(false);
   const [modalDeletarAberto, setModalDeletarAberto] = useState(false);
   const [linkAtivo, setLinkAtivo] = useState(null);
+  const { modalExportarAberto, setModalExportarAberto } = useContext(ContextoExportar);
+  const [modalObsAberto, setModalObsAberto] = useState(false);
 
   const tratarSalvar = (/* dados */) => {
     // >>> BACKEND: trocar por POST/PUT /api/links <<<
+    toast.success('Link adicionado');
   };
 
   const tratarDeletar = () => {
     // >>> BACKEND: trocar por DELETE /api/links/:id <<<
+    toast.success('Link deletado com sucesso'); 
+    setModalDeletarAberto(false);
   };
 
   // agrupando por categoria
@@ -70,14 +79,16 @@ export default function LinkInicial() {
                     <a href={link.url} target="_blank" rel="noopener noreferrer">{link.url}</a>
                   </div>
                   <div className="item-acoes">
-                    <button className="btn-acao" title="Editar" onClick={() => { setLinkAtivo(link); setModalAddAberto(true); }}>
+                    <button className="btn-acao" onClick={() => { setLinkAtivo(link); setModalAddAberto(true); }}>
                       <span className="material-icons">edit</span>
                     </button>
-                    <button className="btn-acao" title="Adicionar arquivo"><span className="material-icons">post_add</span></button>
-                    <button className="btn-acao" title="Deletar" onClick={() => { setLinkAtivo(link); setModalDeletarAberto(true); }}>
+                    <button className="btn-acao" onClick={() => { setLinkAtivo(link); setModalObsAberto(true); }}>
+                      <span className="material-icons">post_add</span>
+                    </button>
+                    <button className="btn-acao" onClick={() => { setLinkAtivo(link); setModalDeletarAberto(true); }}>
                       <span className="material-icons">delete</span>
                     </button>
-                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="btn-acao" title="Visitar">
+                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="btn-acao">
                       <span className="material-icons">open_in_new</span>
                     </a>
                   </div>
@@ -104,6 +115,19 @@ export default function LinkInicial() {
         onClose={() => setModalDeletarAberto(false)}
         aoConfirmar={tratarDeletar}
         nomeItem={linkAtivo?.titulo}
+      />
+      <ModalExportar
+        isOpen={modalExportarAberto}
+        onClose={() => setModalExportarAberto(false)}
+        totalItens={links.length}
+      />
+      <ModalObservacao
+        isOpen={modalObsAberto}
+        onClose={() => setModalObsAberto(false)}
+        aoSalvar={(obs) => {
+          // >>> BACKEND: trocar por PATCH /api/links/:id/observacao <
+          console.log('obs do link', linkAtivo?.id, ':', obs);
+        }}
       />
     </div>
   );

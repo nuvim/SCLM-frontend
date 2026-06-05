@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import ModalBase from './ModalBase';
+import toast from 'react-hot-toast';
 
-export default function ModalExportar({ isOpen, onClose }) {
+export default function ModalExportar({ isOpen, onClose, totalItens = 0 }) {
   const [formato, setFormato] = useState('');
   const [progresso, setProgresso] = useState(0);
   const [exportando, setExportando] = useState(false);
   const [concluido, setConcluido] = useState(false);
+
+  const semItens = totalItens === 0;
 
   const tratarExportar = () => {
     if (!formato) return;
@@ -19,6 +22,7 @@ export default function ModalExportar({ isOpen, onClose }) {
       if (atual >= 100) {
         clearInterval(intervalo);
         setConcluido(true);
+        toast.success('Arquivo exportado com sucesso');
       }
     }, 200);
   };
@@ -40,12 +44,31 @@ export default function ModalExportar({ isOpen, onClose }) {
           Exportar arquivo
         </h2>
 
+        
+
+        {semItens && (
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '12px 16px',
+            border: '1px solid #ef4444',
+            borderRadius: 'var(--raio-borda)',
+            color: '#ef4444',
+            fontSize: '0.9rem'
+          }}>
+            <span className="material-icons-outlined" style={{ fontSize: '1.2rem' }}>error_outline</span>
+            Não é possível exportar 0 itens
+          </div>
+        )}
+
         {!exportando ? (
           <>
             <select
               className="modal-input"
               value={formato}
               onChange={e => setFormato(e.target.value)}
+              disabled={semItens}   // <- desabilita o select também
             >
               <option value="">Selecione</option>
               <option value="pdf">PDF</option>
@@ -53,7 +76,7 @@ export default function ModalExportar({ isOpen, onClose }) {
               <option value="json">JSON</option>
             </select>
 
-            <button className="btn-primario" onClick={tratarExportar} disabled={!formato}>
+            <button className="btn-primario" onClick={tratarExportar} disabled={!formato || semItens}>
               Exportar
             </button>
           </>

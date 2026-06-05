@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import ModalBase from './ModalBase';
 
 export default function ModalLink({ isOpen, onClose, aoSalvar }) {
@@ -7,9 +8,11 @@ export default function ModalLink({ isOpen, onClose, aoSalvar }) {
   const [categoria, setCategoria] = useState('');
 
   const tratarSalvar = () => {
+    if (!titulo) { toast('Título obrigatório', { icon: '⚠️' }); return; }
+    if (!url) { toast('URL obrigatório', { icon: '⚠️' }); return; }  // adiciona o } aqui
     if (aoSalvar) aoSalvar({ titulo, url, categoria: categoria || 'Sem Categoria' });
     onClose();
-  };
+};
 
   return (
     <ModalBase isOpen={isOpen} onClose={onClose}>
@@ -49,3 +52,4 @@ export default function ModalLink({ isOpen, onClose, aoSalvar }) {
     </ModalBase>
   );
 }
+

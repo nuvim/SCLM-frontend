@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ModalBase from './ModalBase';
+import toast from 'react-hot-toast';
 
 export default function ModalMusica({ isOpen, onClose, aoSalvar }) {
   const [titulo, setTitulo] = useState('');
@@ -9,6 +10,9 @@ export default function ModalMusica({ isOpen, onClose, aoSalvar }) {
   const [download, setDownload] = useState(false);
 
   const tratarSalvar = () => {
+    if (!titulo) { toast('Título obrigatório', { icon: '⚠️' }); return; }
+    if (artistas.every(a => !a.trim())) { toast('Deve ter pelo menos um artista', { icon: '⚠️' }); return; }
+    
     if (aoSalvar) aoSalvar({ titulo, artistas, genero, duracao, download });
     onClose();
   };

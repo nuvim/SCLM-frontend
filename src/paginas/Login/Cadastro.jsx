@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BotaoTema from '../../componentes/BotaoTema/BotaoTema';
+import toast from 'react-hot-toast';
+import { ContextoAutenticacao } from '../../contextos/ContextoAutenticacao';
 import './Login.css';
 
 export default function Cadastro() {
@@ -10,17 +12,21 @@ export default function Cadastro() {
   const [carregando, setCarregando] = useState(false);
   
   const navegar = useNavigate();
+  const { fazerLogin } = useContext(ContextoAutenticacao);
 
   const tratarSubmit = async (e) => {
     e.preventDefault();
-    setCarregando(true);
+    if (!nome) { toast('Nome obrigatório', { icon: '⚠️' }); return; }
+    if (!email) { toast('Email obrigatório', { icon: '⚠️' }); return; }
+    if (!senha) { toast('Senha obrigatório', { icon: '⚠️' }); return; }
     
-    // >>> BACKEND: trocar por POST /api/auth/cadastro <<<
-    setTimeout(() => {
-      setCarregando(false);
-      navegar('/login');
-    }, 1000);
-  };
+    setCarregando(true);
+  // >>> BACKEND: trocar por POST /api/auth/cadastro <
+  await fazerLogin();
+  toast.success('Cadastro realizado com sucesso');
+  setCarregando(false);
+  navegar('/dashboard');
+};
 
   return (
     <div className="login-container">

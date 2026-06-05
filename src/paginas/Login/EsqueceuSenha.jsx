@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import BotaoTema from '../../componentes/BotaoTema/BotaoTema';
 import '../Login/Login.css';
@@ -11,11 +12,13 @@ export default function EsqueceuSenha() {
 
   const tratarSubmit = async (e) => {
     e.preventDefault();
+    if (!email) { toast('Email obrigatório', { icon: '⚠️' }); return; }
     setCarregando(true);
 
     // >>> BACKEND: trocar por POST /api/auth/esqueceu-senha <
     setTimeout(() => {
       setCarregando(false);
+      toast.success('Senha alterada com sucesso');
       navegar('/login');
     }, 1000);
   };

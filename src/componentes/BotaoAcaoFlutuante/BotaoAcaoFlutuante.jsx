@@ -5,9 +5,9 @@ export default function BotaoAcaoFlutuante({ rota, onClick, icone1, icone2 }) {
   const conteudo = (
     <div className="fab-conteudo">
       {icone2 && (
-        <span className="material-icons icone-pequeno">{icone1}</span>
+        <span className="material-icons icone-pequeno">{icone2}</span>
       )}
-      <span className="material-icons icone-grande">{icone2 || icone1}</span>
+      <span className="material-icons icone-grande">{icone1 || icone2}</span>
     </div>
   );
 
