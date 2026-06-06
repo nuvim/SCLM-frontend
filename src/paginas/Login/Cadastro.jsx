@@ -13,13 +13,14 @@ export default function Cadastro() {
   
   const navegar = useNavigate();
   const { fazerLogin } = useContext(ContextoAutenticacao);
+  const [confirmarSenha, setConfirmarSenha] = useState('');
 
   const tratarSubmit = async (e) => {
     e.preventDefault();
     if (!nome) { toast('Nome obrigatório', { icon: '⚠️' }); return; }
     if (!email) { toast('Email obrigatório', { icon: '⚠️' }); return; }
     if (!senha) { toast('Senha obrigatório', { icon: '⚠️' }); return; }
-    
+    if (senha !== confirmarSenha) { toast('As senhas não coincidem', { icon: '⚠️' }); return; }
     setCarregando(true);
   // >>> BACKEND: trocar por POST /api/auth/cadastro <
   await fazerLogin();
@@ -83,10 +84,10 @@ export default function Cadastro() {
             <div className="form-grupo">
               <input 
                 type="password" 
-                id="senha" 
+                id="confirmarSenha" 
                 placeholder="Confirmar senha"
-                value={senha}
-                onChange={(e) => setSenha(e.target.value)}
+                value={confirmarSenha}
+                onChange={(e) => setConfirmarSenha(e.target.value)}
                 required
               />
               <span className="material-icons">lock_outline</span>

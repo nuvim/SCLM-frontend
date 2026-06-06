@@ -13,6 +13,7 @@ export default function Navbar() {
 
   // verifica em qual modulo estamos
   const isMusica = location.pathname.includes('/musicas');
+  const isLinks = location.pathname.includes('/links');
   const isDashboard = location.pathname.includes('/dashboard');
 
   const tratarLogout = () => {
@@ -48,6 +49,11 @@ export default function Navbar() {
           <div className="btn-nav btn-nav-busca">
             <div className="icone-svg"></div>
             <input className="busca-input" type="text" placeholder="Música ou Artista" />
+          </div>
+        ) : isLinks ? (
+          <div className="btn-nav btn-nav-busca">
+            <span className="material-icons" style={{ fontSize: '28px' }}>search</span>
+            <input className="busca-input" type="text" placeholder="Título ou categoria" />
           </div>
         ) : (
           <button className="btn-nav">
