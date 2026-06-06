@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import ModalBase from './ModalBase';
+import toast from 'react-hot-toast';
 
 export default function ModalDeletar({ isOpen, onClose, aoConfirmar, nomeItem }) {
   const tratarConfirmar = () => {

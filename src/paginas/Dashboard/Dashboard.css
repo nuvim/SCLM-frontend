@@ -1,15 +1,36 @@
 .dashboard-container {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 24px;
+  align-items: center;
+  animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .cards-linha {
   display: flex;
-  gap: 24px;
+  gap: 16px;
+  justify-content: center;
+  animation: fadeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
 .graficos-linha {
   display: flex;
-  gap: 32px;
+  gap: 24px;
+  width: 100%;
+  animation: fadeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.graficos-linha > * {
+  flex: 1;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

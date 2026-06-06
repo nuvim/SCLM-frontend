@@ -160,3 +160,47 @@
   transform: translateX(0);
 }
 
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.lista-container-branco {
+  animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.lista-titulo {
+  animation: fadeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.cards-navegacao-wrapper {
+  animation: fadeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.item-card {
+  animation: fadeSlideLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.item-card:nth-child(1) { animation-delay: 0.2s; }
+.item-card:nth-child(2) { animation-delay: 0.3s; }
+.item-card:nth-child(3) { animation-delay: 0.4s; }
+.item-card:nth-child(4) { animation-delay: 0.5s; }
+.item-card:nth-child(5) { animation-delay: 0.6s; }
+
