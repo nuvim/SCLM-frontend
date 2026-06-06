@@ -7,12 +7,16 @@ import '../Login/Login.css';
 export default function EsqueceuSenha() {
   const [email, setEmail] = useState('');
   const [carregando, setCarregando] = useState(false);
+  const [novaSenha, setNovaSenha] = useState('');
+  const [confirmarSenha, setConfirmarSenha] = useState('');
 
   const navegar = useNavigate();
 
   const tratarSubmit = async (e) => {
     e.preventDefault();
     if (!email) { toast('Email obrigatório', { icon: '⚠️' }); return; }
+    if (!novaSenha) { toast('Nova senha obrigatória', { icon: '⚠️' }); return; }
+    if (novaSenha !== confirmarSenha) { toast('As senhas não coincidem', { icon: '⚠️' }); return; }
     setCarregando(true);
 
     // >>> BACKEND: trocar por POST /api/auth/esqueceu-senha <
@@ -47,9 +51,28 @@ export default function EsqueceuSenha() {
                 placeholder="Email ou Usuário"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
               />
               <span className="material-icons-outlined">account_circle</span>
+            </div>
+
+            <div className="form-grupo">
+              <input
+                type="password"
+                placeholder="Nova senha"
+                value={novaSenha}
+                onChange={(e) => setNovaSenha(e.target.value)}
+              />
+              <span className="material-icons">lock_outline</span>
+            </div>
+
+            <div className="form-grupo">
+              <input
+                type="password"
+                placeholder="Confirmar nova senha"
+                value={confirmarSenha}
+                onChange={(e) => setConfirmarSenha(e.target.value)}
+              />
+              <span className="material-icons">lock_outline</span>
             </div>
 
             <button type="submit" className="btn-primario" disabled={carregando}>

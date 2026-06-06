@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { ContextoAutenticacao } from '../../contextos/ContextoAutenticacao';
 import BotaoTema from '../../componentes/BotaoTema/BotaoTema';
 import './Login.css';
@@ -15,6 +16,11 @@ export default function Login() {
   // lida com o envio do formulario
   const tratarSubmit = async (e) => {
     e.preventDefault();
+
+    if (!email) { toast('Email obrigatório', { icon: '⚠️' }); return; }
+    if (!email.includes('@gmail.com')) { toast.error('Email inválido'); return; }
+    if (!senha) { toast('Senha obrigatória', { icon: '⚠️' }); return; }
+
     setCarregando(true);
 
     // >>> BACKEND: trocar por POST /api/auth/login <<<
@@ -45,12 +51,11 @@ export default function Login() {
 
             <div className="form-grupo">
               <input
-                type="email"
+                type="text"
                 id="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
               />
               <span className="material-icons-outlined">account_circle</span>
             </div>
@@ -62,7 +67,6 @@ export default function Login() {
                 placeholder="Senha"
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
-                required
               />
               <span className="material-icons">lock_outline</span>
             </div>
