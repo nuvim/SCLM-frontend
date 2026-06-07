@@ -1,0 +1,11 @@
+/* estilos gerais do app */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.conteudo-principal {
+  flex: 1;
+  padding: 24px;
+}

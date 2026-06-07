@@ -1,0 +1,218 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--cor-card);
+  border-radius: var(--raio-borda-grande);
+  padding: 32px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--cor-borda);
+}
+
+.modal-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 200px;
+  color: var(--cor-borda);
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.modal-form {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--cor-primario);
+  border-radius: var(--raio-borda-botao);
+  background-color: transparent;
+  color: var(--cor-texto);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.modal-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.linha-artista {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-add-linha {
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--cor-primario);
+  border-radius: var(--raio-borda-botao);
+  background-color: transparent;
+  color: var(--cor-texto);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.linha-inferior {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.input-curto {
+  width: 120px;
+}
+
+.checkbox-personalizado {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cor-texto);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.checkbox-personalizado input {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--cor-primario);
+  border-radius: 4px;
+  cursor: pointer;
+  accent-color: var(--cor-primario);
+}
+
+.modal-acoes-rodape {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.btn-modal-rodape {
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--cor-primario);
+  border-radius: var(--raio-borda-botao);
+  background-color: transparent;
+  color: var(--cor-texto);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-modal-rodape:hover {
+  background-color: var(--cor-primario);
+  color: white;
+}
+
+.modal-deletar-texto {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--cor-texto);
+  margin-bottom: 24px;
+  animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.modal-obs-textarea {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #E1F2FE;      /* borda mais suave, sem azul */
+  border-radius: var(--raio-borda-botao); ;
+  background-color: #E1F2FE;      /* fundo diferente do card */
+  color: var(--cor-texto);
+  font-size: 1rem;
+  font-weight: 500;
+  resize: none;
+  height: 120px;
+}
+
+.modal-obs-textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.modal-obs-botao {
+  border-color: #E1F2FE;          /* borda dos botões mais suave */
+}
+
+@keyframes modalEntrar {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes overlayEntrar {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-overlay {
+  animation: overlayEntrar 0.2s ease both;
+}
+
+.modal-content {
+  animation: modalEntrar 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.modal-form .modal-input,
+.modal-form .linha-artista,
+.modal-form .linha-inferior,
+.modal-form .modal-obs-textarea {
+  animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.modal-form > *:nth-child(1) { animation-delay: 0.05s; }
+.modal-form > *:nth-child(2) { animation-delay: 0.1s; }
+.modal-form > *:nth-child(3) { animation-delay: 0.15s; }
+.modal-form > *:nth-child(4) { animation-delay: 0.2s; }
+.modal-form > *:nth-child(5) { animation-delay: 0.25s; }
