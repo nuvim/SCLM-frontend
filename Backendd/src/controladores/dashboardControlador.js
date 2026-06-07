@@ -1,6 +1,5 @@
 const { pool } = require('../config/banco');
 
-// GET /api/dashboard
 async function obterEstatisticas(req, res) {
   try {
     const [[{ totalMusicas }]] = await pool.query(
@@ -13,7 +12,6 @@ async function obterEstatisticas(req, res) {
       [req.usuarioId]
     );
 
-    // últimas 5 músicas do usuário com artista e gênero
     const [ultimasMusicas] = await pool.query(`
       SELECT
         m.id_musica,
@@ -58,7 +56,6 @@ async function obterEstatisticas(req, res) {
       GROUP BY g.id_genero
     `, [req.usuarioId]);
 
-    // distribuição por artista para o gráfico
     const [distribuicaoArtista] = await pool.query(`
       SELECT a.nome_artista AS label, COUNT(*) AS total
       FROM usuario_musica um
