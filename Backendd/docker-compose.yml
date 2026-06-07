@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    container_name: pi-III
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: musica_site
+    ports:
+      - "3306:3306"
+    volumes:
+      - dados-mysql:/var/lib/mysql
+      - ./banco.sql:/docker-entrypoint-initdb.d/banco.sql
+      - ./popular.sql:/docker-entrypoint-initdb.d/popu.sql   
+
+volumes:
+  dados-mysql:   
