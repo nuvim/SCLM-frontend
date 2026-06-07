@@ -156,7 +156,7 @@ async function esqueceuSenha(req, res) {
       return res.json({ mensagem: 'Se o e-mail existir, você receberá as instruções.' });
     }
 
-    console.log(`🔑 Solicitação de reset para: ${email}`);
+    console.log(` Solicitação de reset para: ${email}`);
 
     return res.json({ mensagem: 'Se o e-mail existir, você receberá as instruções.' });
   } catch (err) {
