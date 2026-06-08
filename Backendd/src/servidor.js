@@ -30,7 +30,7 @@ app.get('/api/health', (req, res) => {
 async function inicializar() {
   await testarConexao();
   app.listen(PORT, () => {
-    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+    console.log(`Servidor em http://localhost:${PORT}`);
   });
 }
 
